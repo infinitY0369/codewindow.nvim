@@ -79,6 +79,9 @@ local function get_window_config(current_window)
   if config.max_minimap_height then
     minimap_height = math.min(minimap_height, config.max_minimap_height)
   end
+  if config.window_border ~= "none" then
+    minimap_height = minimap_height - 2
+  end
 
   local relative = config.relative
   local is_relative = config.relative == "win"
@@ -91,7 +94,7 @@ local function get_window_config(current_window)
     win = win,
     anchor = "NE",
     width = config.minimap_width + 4,
-    height = minimap_height - 2,
+    height = minimap_height,
     row = row,
     col = col,
     focusable = false,
